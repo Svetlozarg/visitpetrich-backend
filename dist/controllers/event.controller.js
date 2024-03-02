@@ -74,14 +74,11 @@ exports.updateEvent = (0, express_async_handler_1.default)((req, res) => __await
 //!@route DELETE /api/event/:id
 //@access private
 exports.deleteEvent = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const event = yield event_model_1.default.findById(req.params.id);
-    if (event) {
-        yield event.remove();
-        res.status(200).json({ success: true, message: "Event removed" });
-    }
-    else {
+    const event = yield event_model_1.default.findOneAndDelete({ _id: req.params.id });
+    if (!event) {
         res.status(404);
-        res.send({ success: false, message: "Event not found" });
+        throw new Error("Event not found");
     }
+    res.status(200).json({ success: true, message: "Event deleted successfuly" });
 }));
 //# sourceMappingURL=event.controller.js.map
