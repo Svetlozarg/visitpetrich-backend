@@ -6,6 +6,7 @@ import cors from "cors";
 import { error, success } from "./helpers/logger";
 import authRoutes from "./routes/auth.routes";
 import eventRoutes from "./routes/event.routes";
+import placeRoutes from "./routes/place.routes";
 
 const PORT = process.env.PORT || 5000;
 
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", authRoutes);
 app.use("/api/event", eventRoutes);
+app.use("/api/place", placeRoutes);
 app.use((req: Request, res: Response) => {
   res.status(404).json({ message: "404: Route Not Found" });
 });
