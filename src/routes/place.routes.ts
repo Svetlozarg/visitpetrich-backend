@@ -10,8 +10,8 @@ import {
 
 const router = express.Router();
 
-router.get("/all", validateToken, getAllPlaces);
-router.get("/:id", validateToken, getPlace);
+router.get("/all", getAllPlaces);
+router.get("/:id", getPlace);
 router.post("/create", validateToken, createPlace);
 router.put("/:id", validateToken, updatePlace);
 router.delete("/:id", validateToken, deletePlace);
