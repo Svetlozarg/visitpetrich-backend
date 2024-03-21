@@ -2,6 +2,22 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const eventSchema = new mongoose_1.Schema({
+    category: {
+        type: String,
+        required: true,
+        enum: [
+            "exhibitions",
+            "conferences",
+            "seminars",
+            "festivals",
+            "celebration event",
+            "fundraisers",
+            "sports",
+            "art event",
+            "virtual events",
+            "workshops",
+        ],
+    },
     title: {
         type: String,
         required: true,

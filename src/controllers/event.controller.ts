@@ -41,6 +41,7 @@ export const createEvent = expressAsyncHandler(async (req, res) => {
 export const updateEvent = expressAsyncHandler(async (req, res) => {
   const event = await Event.findById(req.params.id);
   if (event) {
+    event.category = req.body.category || event.category;
     event.title = req.body.title || event.title;
     event.description = req.body.description || event.description;
     event.startDate = req.body.startDate || event.startDate;

@@ -54,6 +54,7 @@ exports.createEvent = (0, express_async_handler_1.default)((req, res) => __await
 exports.updateEvent = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const event = yield event_model_1.default.findById(req.params.id);
     if (event) {
+        event.category = req.body.category || event.category;
         event.title = req.body.title || event.title;
         event.description = req.body.description || event.description;
         event.startDate = req.body.startDate || event.startDate;

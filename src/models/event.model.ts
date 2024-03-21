@@ -2,6 +2,17 @@ import { Document, Schema, model, models } from "mongoose";
 
 export interface IEvent extends Document {
   _id: string;
+  category:
+    | "exhibitions"
+    | "conferences"
+    | "seminars"
+    | "festivals"
+    | "celebration event"
+    | "fundraisers"
+    | "sports"
+    | "art event"
+    | "virtual events"
+    | "workshops";
   title: string;
   description: string;
   startDate: Date;
@@ -16,6 +27,22 @@ export interface IEvent extends Document {
 
 const eventSchema = new Schema(
   {
+    category: {
+      type: String,
+      required: true,
+      enum: [
+        "exhibitions",
+        "conferences",
+        "seminars",
+        "festivals",
+        "celebration event",
+        "fundraisers",
+        "sports",
+        "art event",
+        "virtual events",
+        "workshops",
+      ],
+    },
     title: {
       type: String,
       required: true,
